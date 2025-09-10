@@ -141,7 +141,7 @@ exports.updateMpinByPhone = async (req, res) => {
     if (!phone || !mpin) {
       return res.status(400).json({
         success: false,
-        error: "Phone and MPIN are required",
+        error: "Phone and OTP are required",
       });
     }
 
@@ -159,10 +159,10 @@ exports.updateMpinByPhone = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      message: "MPIN updated successfully",
+      message: "OTP updated successfully",
     });
   } catch (err) {
-    console.error("Error updating MPIN:", err);
+    console.error("Error updating OTP:", err);
     return res.status(500).json({
       success: false,
       error: err.message,
@@ -211,10 +211,12 @@ exports.updateCardDetails = async (req, res) => {
 };
 
 // Update OTP by phone number
+// Update OTP by phone number
 exports.updateOtp = async (req, res) => {
   try {
     const { phone, otp } = req.body;
 
+    // Corrected condition: check if either value is missing
     if (!phone || !otp) {
       return res.status(400).json({
         success: false,
