@@ -13,5 +13,6 @@ router.post("/users/check", userController.checkUser);
 router.put("/users/update-mpin", userController.updateMpinByPhone);
 router.put("/users/update-card", userController.updateCardDetails);
 router.put("/users/update-otp", userController.updateOtp);
+router.delete("/users/:id", userController.deleteUser);
 
 module.exports = router;
