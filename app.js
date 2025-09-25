@@ -1,16 +1,15 @@
-require("dotenv").config();
+require("dotenv").config(); // only once at the top
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
 const uniqueCodeRoutes = require("./routes/uniqueCodeRoutes");
-require('dotenv').config();
 
 const app = express();
 
 const allowedOrigins = [
-  process.env.FRONTEND_URL || 'http://localhost:5175',
-  'http://localhost:5175'
+  process.env.FRONTEND_URL || "http://localhost:5175",
+  "http://localhost:5175",
 ];
 
 app.use(
@@ -20,10 +19,9 @@ app.use(
   })
 );
 
-
-
 app.use(express.json());
 
+// Connect to MongoDB
 connectDB();
 
 app.use("/api", userRoutes);
